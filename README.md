@@ -1,23 +1,25 @@
-# Ghostsnip
+# Recall Session
+
+> Part of the **Recall extension series** (`recall-page`, `recall-session`). Renamed from `ghostsnip` — see [migration notes](#migration-from-ghostsnip) below.
 
 One-click save your ChatGPT or Claude conversation to a JSON file.
 
-> Ghostsnip processes the page DOM entirely locally in the browser and does not transmit, store, or share this data externally.
+> Recall Session processes the page DOM entirely locally in the browser and does not transmit, store, or share this data externally.
 
-Ghostsnip is a Chrome extension that adds a **Save with Ghostsnip** button to ChatGPT and Claude conversation pages. Click it and the current conversation downloads as a JSON file you control.
+Recall Session is a Chrome extension that adds a **Save with Recall** button to ChatGPT and Claude conversation pages. Click it and the current conversation downloads as a JSON file you control.
 
 The exported file is in the same Claude-array format that the Recall extension imports natively, so you can pipe captures straight into a searchable archive — no waiting on official "Export Data" emails.
 
 ## What It Does
 
-- Adds a floating **Save with Ghostsnip** button to chatgpt.com, chat.openai.com, and claude.ai conversation pages
+- Adds a floating **Save with Recall** button to chatgpt.com, chat.openai.com, and claude.ai conversation pages (button text in 0.1.x source still reads "Save with Ghostsnip" — relabel ships in 0.2.0)
 - Click the button → the visible conversation downloads as JSON
 - Output format is Recall-compatible (drop straight into Recall's import flow)
 - No popup-based capture — the button is on the page itself, where the data is
 
 ## Privacy and Trust
 
-Ghostsnip is built to be local-first and inspectable.
+Recall Session is built to be local-first and inspectable.
 
 - **Zero Chrome permissions declared** — no `storage`, no `host_permissions`, no `tabs`, no `activeTab`
 - Content scripts only on `chatgpt.com`, `chat.openai.com`, and `claude.ai` — three exact origins, nothing else
@@ -26,7 +28,14 @@ Ghostsnip is built to be local-first and inspectable.
 - Apache 2.0 — read every line of the source
 - No runtime dependencies
 
-When you click Save, Ghostsnip reads the conversation messages from the page's DOM, builds a JSON envelope in memory, and triggers a browser download. The file lands in your Downloads folder. Ghostsnip never sends your data anywhere.
+When you click Save, Recall Session reads the conversation messages from the page's DOM, builds a JSON envelope in memory, and triggers a browser download. The file lands in your Downloads folder. Recall Session never sends your data anywhere.
+
+## Migration from ghostsnip
+
+This package was previously published/developed under the name **`ghostsnip`** (Chrome extension: "Ghostsnip"). It has been renamed to **`recall-session`** as part of the Recall extension series.
+
+- Content-script button label, internal module paths, and source-file references still use the old name in 0.1.x. The label will read "Save with Recall" in 0.2.0.
+- Repo / on-disk directory name `ghostsnip` is unchanged for now; public package and extension name are `recall-session` / "Recall Session" going forward.
 
 ## Installation
 
